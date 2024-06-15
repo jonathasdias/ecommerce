@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from '../../imgs/logo.png';
 import { FaSearch } from "react-icons/fa";
 import ButtonCart from "./ButtonCart";
+import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { AppDispatch } from "../../../model/redux/store";
 
 const Header: React.FC = () => {
+
+    const navigate = useNavigate();
+
+    const [ search, setSearch ] = useState<string>("");
+
+    function handleSearchProduct(e:React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        navigate(`/products?search=${encodeURIComponent(search.trim())}`)
+    }
 
     return (
         <header className="flex flex-col gap-y-2 px-2 lg:px-4 py-4 border-b text-base md:text-lg lg:text-xl bg-white">
@@ -19,9 +32,9 @@ const Header: React.FC = () => {
                     <span className="text-lg md:text-2xl font-semibold whitespace-nowrap">WebLine</span>
                 </Link>
 
-                <form className="border-2 flex flex-nowrap w-[40rem] rounded-md">
-                    <input type="search" name="search" className="py-1 px-2 md:p-2 w-full" placeholder="Busque pelo nome do seu produto"/>
-                    <button type="button" className="px-3" aria-label="Buscar produto"><FaSearch /></button>
+                <form onSubmit={handleSearchProduct} className="border-2 flex flex-nowrap w-[40rem] rounded-md">
+                    <input type="search" name="search" onChange={(e)=> setSearch(e.target.value)} className="py-1 px-2 md:p-2 w-full bg-[#E8F0FE]" placeholder="Busque pelo nome do seu produto"/>
+                    <button type="submit" className="px-3" aria-label="Buscar produto"><FaSearch /></button>
                 </form>
 
                 <div className="flex items-center gap-x-2">

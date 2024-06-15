@@ -1,3 +1,6 @@
+import RandomStars from "./RandomStars";
+import { Link } from "react-router-dom";
+
 interface ProductType {
     id: string;
     title: string;
@@ -21,15 +24,15 @@ const formatter:Intl.NumberFormat = new Intl.NumberFormat('pt-BR', {
 
 const CardProduct:React.FC<CardProductProps> = ({product}) => {
     return (
-        <div key={product.id} className="border-2 max-h-96 h-96 rounded-md overflow-hidden p-2 cursor-pointer">
+        <Link to={`/products/${product.id}`} className="border-2 rounded-md overflow-hidden p-2 bg-white">
             <img src={product.thumbnail.replace(/\w\.jpg/gi, "W.jpg")} alt={product.title + product.id} className="w-full"/>
 
             <p className="text-base text-wrap overflow-hidden text-ellipsis line-clamp-2">{product.title}</p>
 
-            <p>Stars aleatorias</p>
+            <RandomStars maxStars={5}/>
 
-            <p>Price: {formatter.format(product.price)}</p>
-        </div>
+            <p>{formatter.format(product.price)}</p>
+        </Link>
     )
 }
 export default CardProduct;

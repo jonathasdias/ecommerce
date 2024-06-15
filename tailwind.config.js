@@ -6,7 +6,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(180px, 1fr))',
+        'auto-fit': 'repeat(auto-fit, minmax(180px, 1fr))',
+      },
+    },
   },
   plugins: [],
 }
