@@ -1,16 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Header from "./ui/components/header/Header";
+import Footer from "./ui/components/footer/Footer";
 
 function App() {
-  // const dispatch:AppDispatch = useDispatch();
-  // const { text } = useSelector((state:RootState) => state.testeReducer);
-
-
   return (
     <>
       <Header />
       <Outlet />
-      {/* Criar footer com pages, redes sociais, e mais alguma coisa. */}
+      <Footer />
     </>
   )
 }

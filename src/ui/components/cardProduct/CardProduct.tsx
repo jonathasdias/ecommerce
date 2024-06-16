@@ -14,6 +14,7 @@ interface ProductType {
 
 interface CardProductProps {
     product: ProductType;
+    classNames?: string;
 }
 
 const formatter:Intl.NumberFormat = new Intl.NumberFormat('pt-BR', {
@@ -22,9 +23,9 @@ const formatter:Intl.NumberFormat = new Intl.NumberFormat('pt-BR', {
     minimumFractionDigits: 2
 });
 
-const CardProduct:React.FC<CardProductProps> = ({product}) => {
+const CardProduct:React.FC<CardProductProps> = ({product, classNames}) => {
     return (
-        <Link to={`/products/${product.id}`} className="border-2 rounded-md overflow-hidden p-2 bg-white">
+        <Link to={`/products/${product.id}`} className={`${classNames} border-2 rounded-md overflow-hidden p-2 bg-white`}>
             <img src={product.thumbnail.replace(/\w\.jpg/gi, "W.jpg")} alt={product.title + product.id} className="w-full"/>
 
             <p className="text-base text-wrap overflow-hidden text-ellipsis line-clamp-2">{product.title}</p>

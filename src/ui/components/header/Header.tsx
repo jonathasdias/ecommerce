@@ -3,8 +3,6 @@ import Logo from '../../imgs/logo.png';
 import { FaSearch } from "react-icons/fa";
 import ButtonCart from "./ButtonCart";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { AppDispatch } from "../../../model/redux/store";
 
 const Header: React.FC = () => {
 
@@ -49,5 +47,4 @@ const Header: React.FC = () => {
         </header>
     )
 }
-
 export default Header;

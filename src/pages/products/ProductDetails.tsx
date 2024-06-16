@@ -15,19 +15,19 @@ export interface Product {
     catalog_product_id: string;
     category_id: string;
     condition: string;
-    coverage_areas: any[]; // Defina o tipo correto se necessário
+    coverage_areas: any[];
     date_created: string;
     deal_ids: string[];
-    descriptions: any[]; // Defina o tipo correto se necessário
+    descriptions: any[];
     domain_id: string;
-    health: any; // Defina o tipo correto se necessário
+    health: any;
     initial_quantity: number;
     international_delivery_mode: string;
     last_updated: string;
     listing_source: string;
     listing_type_id: string;
-    location: any; // Defina o tipo correto se necessário
-    non_mercado_pago_payment_methods: any[]; // Defina o tipo correto se necessário
+    location: any;
+    non_mercado_pago_payment_methods: any[];
     official_store_id: number;
     original_price: number;
     parent_item_id: string | null;
@@ -35,35 +35,33 @@ export interface Product {
     pictures: Picture[];
     sale_terms: SaleTerm[];
     seller_address: SellerAddress;
-    seller_contact: any; // Defina o tipo correto se necessário
+    seller_contact: any;
     seller_id: number;
     shipping: Shipping;
     site_id: string;
     status: string;
-    sub_status: any[]; // Defina o tipo correto se necessário
+    sub_status: any[];
     tags: string[];
     thumbnail: string;
     thumbnail_id: string;
-    variations: any[]; // Defina o tipo correto se necessário
+    variations: any[];
     video_id: string | null;
     warranty: string;
 }
 
 export interface Attribute {
-    // Defina os campos de cada atributo conforme necessário
     name: string;
     value_name: string;
 }
 
 export interface Picture {
-    // Defina os campos de cada imagem conforme necessário
+    
     id: string;
     url: string;
     secure_url: string;
 }
 
 export interface SaleTerm {
-    // Defina os campos de cada termo de venda conforme necessário
     id: string;
     name: string;
     value_id: string | null;
@@ -71,7 +69,6 @@ export interface SaleTerm {
 }
 
 export interface SellerAddress {
-    // Defina os campos do endereço do vendedor conforme necessário
     city: LocationDetail;
     state: LocationDetail;
     country: LocationDetail;
@@ -80,16 +77,15 @@ export interface SellerAddress {
 }
 
 export interface LocationDetail {
-    // Defina os campos detalhados da localização conforme necessário
     id: string;
     name: string;
 }
 
 export interface Shipping {
     mode: string;
-    methods: any[]; // Defina o tipo correto se necessário
+    methods: any[];
     tags: string[];
-    dimensions: any; // Defina o tipo correto se necessário
+    dimensions: any;
     local_pick_up: boolean;
     free_shipping: boolean;
     logistic_type: string;
@@ -107,7 +103,8 @@ const ProductDetails: React.FC = () => {
     if (loading) return <div className="p-4 text-2xl text-center">Carregando...</div>;
     if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
 
-    // Criar a interface moderna, olhar o swiper de slider de imagem com outras imagens do lado.
+    // Criar a interface moderna, olhar o swiper de slider de imagem com outras imagens do lado e marclivr.
+    // ou criar na mão mesmo.
 
     console.log(data);
 

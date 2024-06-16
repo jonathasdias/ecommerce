@@ -1,13 +1,17 @@
 import Slideshow from "../../ui/components/slideshow/Slideshow";
-import Logo from '../../ui/imgs/logo.png';
+import CardProduct from "../../ui/components/cardProduct/CardProduct";
+import useFetch from "../../model/hooks/useFetch";
+import TypeProduct from '../../model/@types/TypeProduct';
 import 'swiper/swiper-bundle.css';
 
 const Home: React.FC = ()=> {
 
-    const items = Array.from( {length: 10}, (_,index)=> ({
-        id: index + 1,
-        content: `Item ${index + 1}`,
-    }));
+    const quantityItems:number = 10;
+
+    const { data, error, loading } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB5672&limit=${quantityItems}`)
+
+    if (loading) return <div className="p-4 text-2xl text-center">Carregando...</div>;
+    if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
 
     return (
         <main className="flex flex-col flex-nowrap gap-20">
@@ -15,31 +19,17 @@ const Home: React.FC = ()=> {
                 <Slideshow />
             </section>
             
-            <section className=" bg-white">
-                <h2 className="p-6 text-3xl">Mais relevantes</h2>
+            <section className="bg-white p-6">
+                <h2 className="text-3xl mb-4">Mais relevantes</h2>
 
                 <swiper-container
                     slides-per-view="4"
                     navigation="true"
-                    pagination="true"
-                    space-between="10"
+                    space-between="20"
                     slides-per-group= "4"
                 >
-
-                    {items.map((_, index)=> (
-                        <swiper-slide key={index}>
-                            <div className="p-4">
-                                <img src={Logo}/>
-
-                                <div>
-                                    <span>Freete Grates</span>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione sapiente assumenda illo, voluptatibus, sequi ab debitis reprehenderit reiciendis dicta officia harum autem aspernatur excepturi molestias facilis eius, ad eligendi maxime.</p>
-
-                                    <span>R$ 200,99</span>
-                                </div>
-
-                            </div>
-                        </swiper-slide>
+                    {data?.results.map((product, i)=> (
+                        <CardProduct key={i + 1} product={product} classNames="swiper-slide"/>
                     ))}
                 </swiper-container>
              
@@ -51,7 +41,7 @@ const Home: React.FC = ()=> {
 
             </section>
 
-            <section className="p-6 bg-white">
+            <section className="p-6 bg-white mb-4">
 
                 <p>Alguma informação que leve para Products.</p>
 
