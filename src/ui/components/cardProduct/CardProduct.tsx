@@ -1,5 +1,6 @@
-import RandomStars from "./RandomStars";
+import RandomStars from "../randomStars/RandomStars";
 import { Link } from "react-router-dom";
+import formatter from "../../../model/utils/formatPrice";
 
 interface ProductType {
     id: string;
@@ -16,12 +17,6 @@ interface CardProductProps {
     product: ProductType;
     classNames?: string;
 }
-
-const formatter:Intl.NumberFormat = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-});
 
 const CardProduct:React.FC<CardProductProps> = ({product, classNames}) => {
     return (

@@ -32,7 +32,7 @@ const Products: React.FC = () => {
     if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
 
     return (
-        <section>
+        <section className="min-h-screen">
             <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 md:gap-4 my-8 p-1 sm:p-2">
                 {data?.results.map(product=> <CardProduct key={product.id} product={product}/>)}
             </div>

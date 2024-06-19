@@ -1,7 +1,4 @@
-import useFetch from "../../model/hooks/useFetch";
-import { useParams } from "react-router-dom";
-
-export interface Product {
+export default interface ProductDeatils {
     id: string;
     title: string;
     price: number;
@@ -55,7 +52,7 @@ export interface Attribute {
 }
 
 export interface Picture {
-    
+
     id: string;
     url: string;
     secure_url: string;
@@ -91,27 +88,3 @@ export interface Shipping {
     logistic_type: string;
     store_pick_up: boolean;
 }
-// Colocar tudo isso em types, criar uma pasta para productDetails.
-// Colocar o tipo somante das informações que irei utilizar.
-
-const ProductDetails: React.FC = () => {
-
-    const { productId } = useParams();
-
-    const { data, error, loading } = useFetch(`https://api.mercadolibre.com/items/${productId}`)
-
-    if (loading) return <div className="p-4 text-2xl text-center">Carregando...</div>;
-    if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
-
-    // Criar a interface moderna, olhar o swiper de slider de imagem com outras imagens do lado e marclivr.
-    // ou criar na mão mesmo.
-
-    console.log(data);
-
-    return (
-        <h1>
-            Product Details
-        </h1>
-    )
-}
-export default ProductDetails;
