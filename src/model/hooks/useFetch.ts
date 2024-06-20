@@ -7,7 +7,14 @@ interface FetchState<T> {
   error: string | null;
 }
 
-export default function useFetch<T = any>(url: string): FetchState<T> {
+interface FetchOptions {
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  headers?: Record<string, string>;
+  body?: any;
+  params?: Record<string, any>;
+}
+
+export default function useFetch<T = any>(url: string, options: FetchOptions = {}): FetchState<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -19,7 +26,12 @@ export default function useFetch<T = any>(url: string): FetchState<T> {
       setLoading(true);
 
       try {
-        const response = await axios.get<T>(url, {
+        const response = await axios({
+          url,
+          method: options.method || 'GET',
+          headers: options.headers,
+          data: options.body,
+          params: options.params,
           cancelToken: source.token,
         });
         setData(response.data);
