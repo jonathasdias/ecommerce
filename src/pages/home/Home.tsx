@@ -1,49 +1,75 @@
+import 'swiper/swiper-bundle.css';
 import Slideshow from "../../ui/components/slideshow/Slideshow";
-import CardProduct from "../../ui/components/cardProduct/CardProduct";
 import useFetch from "../../model/hooks/useFetch";
 import TypeProduct from '../../model/@types/TypeProduct';
-import 'swiper/swiper-bundle.css';
+import CardProduct from "../../ui/components/cardProduct/CardProduct";
+
+interface TypeCategories {
+    id: string,
+    name: string
+}
 
 const Home: React.FC = ()=> {
-
+    
     const quantityItems:number = 10;
 
-    const { data, error, loading } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB5672&limit=${quantityItems}`)
+    const { data:vehicleProducts, error:errorVehicleProducts, loading:loadingVehicleProducts } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB5672&limit=${quantityItems}`)
+    const { data:personalCare, error:errorPersonalCare, loading:loadingPersonalCare } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB1246&limit=${quantityItems}`)
+    const { data:categories, error:errorCategories, loading:loadingCategories } = useFetch<TypeCategories[]>(`https://api.mercadolibre.com/sites/MLB/categories`)
 
-    if (loading) return <div className="p-4 text-2xl text-center">Carregando...</div>;
-    if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
+    if (loadingVehicleProducts || loadingPersonalCare || loadingCategories) return <div className="p-4 text-2xl text-center">Carregando...</div>;
+    if (errorVehicleProducts || errorPersonalCare || errorCategories) return <div className="p-4 text-2xl text-center">Error</div>;
 
     return (
-        <main className="flex flex-col flex-nowrap gap-20">
+        <main className="flex flex-col flex-nowrap gap-16">
             <section>
                 <Slideshow />
             </section>
+
+            <section className='bg-white'>
+                <h2 className='text-2xl p-4'>Categorias</h2>
+
+                <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
+                    {categories &&
+                        categories.map(category => <p key={category.id} className='p-4 text-nowrap bg-gray-200 rounded-md'>{category.name}</p>)
+                    }
+                </div>
+            </section>
             
             <section className="bg-white p-6">
-                <h2 className="text-3xl mb-4">Mais relevantes</h2>
+                <h2 className="text-2xl mb-4">Para seu Veículo</h2>
 
-                <swiper-container
-                    slides-per-view="4"
-                    navigation="true"
-                    space-between="20"
-                    slides-per-group= "4"
-                >
-                    {data?.results.map((product, i)=> (
-                        <CardProduct key={i + 1} product={product} classNames="swiper-slide"/>
-                    ))}
-                </swiper-container>
+                {vehicleProducts &&
+                    <swiper-container
+                        slides-per-view="4"
+                        navigation="true"
+                        space-between="20"
+                        slides-per-group= "4"
+                    >
+                        {vehicleProducts.results.map((product)=> (
+                            <CardProduct key={product.id} product={product} classNames="swiper-slide"/>
+                        ))}
+                    </swiper-container>
+                }
              
             </section>
 
             <section className="p-6 bg-white">
 
-                <p>Alguma informação que leve para About.</p>
+                <h2 className="text-2xl mb-4">Cuidado pessoal</h2>
 
-            </section>
-
-            <section className="p-6 bg-white mb-4">
-
-                <p>Alguma informação que leve para Products.</p>
+                {personalCare &&
+                    <swiper-container
+                        slides-per-view="4"
+                        navigation="true"
+                        space-between="20"
+                        slides-per-group= "4"
+                    >
+                        {personalCare.results.map((product)=> (
+                            <CardProduct key={product.id} product={product} classNames="swiper-slide"/>
+                        ))}
+                    </swiper-container>
+                }
 
             </section>
         </main>
