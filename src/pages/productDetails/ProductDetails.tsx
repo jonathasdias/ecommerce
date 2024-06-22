@@ -2,14 +2,15 @@ import useFetch from "../../model/hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 import TypeProductDeatils from "../../model/@types/TypeProductDetails";
-import TypeProduct from '../../model/@types/TypeProduct';
 
 import SliderDesc from "./SliderDesc";
 import RandomStars from "../../ui/components/randomStars/RandomStars";
 import TableAttributes from "./TableAttributes";
-import CardProduct from "../../ui/components/cardProduct/CardProduct";
+import Loading from "../../ui/components/loading/Loading";
+import Error from "../../ui/components/error/Error";
 
 import formatter from "../../model/utils/formatPrice";
+import ProductRelated from "./ProductRelated";
 
 interface TypePayment {
     id: string,
@@ -20,15 +21,13 @@ interface TypePayment {
 }
 
 const ProductDetails: React.FC = () => {
-
     const { productId } = useParams();
 
     const { data:detailsProduct, error, loading } = useFetch<TypeProductDeatils>(`https://api.mercadolibre.com/items/${productId}`);
     const { data:paymentMethods, error:errorPayment, loading:loadingPayment } = useFetch<TypePayment[]>(`https://api.mercadolibre.com/sites/MLB/payment_methods`);
-    const { data:relatedProducts, error:errorRelatedProducts, loading:loadingRelatedProducts } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=${detailsProduct && detailsProduct.category_id}&limit=20`);
 
-    if (loading || loadingPayment || loadingRelatedProducts) return <div className="p-4 text-6xl text-center">Carregando...</div>;
-    if (error || errorPayment || errorRelatedProducts) return <div className="p-4 text-2xl text-center">Erro</div>;
+    if (loading || loadingPayment) return (<Loading/>);
+    if (error || errorPayment) return (<Error/>);
 
     const discountAmount: number = detailsProduct ? (detailsProduct?.original_price - detailsProduct?.price) : 0;
     const discount: string = detailsProduct ? ((discountAmount / detailsProduct?.original_price) * 100).toFixed(0) + "%" : "";
@@ -38,7 +37,7 @@ const ProductDetails: React.FC = () => {
             {
                 detailsProduct &&
                 <section className="flex items-center w-full min-h-[31rem] bg-white p-2 rounded-lg shadow-xl">
-                    {detailsProduct && <SliderDesc pictures={detailsProduct.pictures} thumbnail={detailsProduct.thumbnail} />}
+                    <SliderDesc pictures={detailsProduct.pictures} thumbnail={detailsProduct.thumbnail} />
 
                     <div className="p-6">
                         <h2 className="text-2xl">{detailsProduct.title}</h2>
@@ -95,13 +94,7 @@ const ProductDetails: React.FC = () => {
                     <div className="px-2 border-black">
                         <h2 className="text-2xl p-4">Produtos da mesma categoria</h2>
 
-                        <div className="flex overflow-hidden overflow-x-auto gap-x-2 p-3">
-                            {relatedProducts && 
-                                relatedProducts.results.map(product=> (
-                                    <CardProduct key={product.id + 1} product={product} classNames="flex-shrink-0 w-64"/>
-                                ))
-                            }
-                        </div>
+                        <ProductRelated categoryId={detailsProduct.category_id}/>
                     </div>
 
                     <hr className="my-6 w-1/2 mx-auto"/>
@@ -111,7 +104,6 @@ const ProductDetails: React.FC = () => {
                     </div>
                 </section>
             }
-
         </main>
     )
 }

@@ -10,6 +10,7 @@ import About from './pages/about/About.tsx'
 import Products from './pages/products/Products.tsx'
 import { register } from 'swiper/element/bundle';
 import ProductDetails from './pages/productDetails/ProductDetails.tsx'
+import Cart from './pages/cart/Cart.tsx'
 
 register();
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([{
     {path: '/about', element: <About />},
     {path: '/products', element: <Products />},
     {path: '/products/:productId', element: <ProductDetails />},
+    {path: '/cart', element: <Cart />},
   ]
 }])
 

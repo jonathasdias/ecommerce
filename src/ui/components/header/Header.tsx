@@ -12,7 +12,6 @@ const Header: React.FC = () => {
 
     function handleSearchProduct(e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
         navigate(`/products?search=${encodeURIComponent(search.trim())}`)
     }
 

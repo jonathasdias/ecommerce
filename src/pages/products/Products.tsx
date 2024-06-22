@@ -1,6 +1,8 @@
 import useFetch from "../../model/hooks/useFetch";
 import CardProduct from "../../ui/components/cardProduct/CardProduct";
 import { useLocation } from "react-router-dom";
+import Loading from "../../ui/components/loading/Loading";
+import Error from "../../ui/components/error/Error";
 
 interface ProductType {
   id: string;
@@ -28,8 +30,8 @@ const Products: React.FC = () => {
 
     const { data, error, loading } = useFetch<ApiResponse>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${page}`);
 
-    if (loading) return <div className="p-4 text-2xl text-center">Carregando...</div>;
-    if (error) return <div className="p-4 text-2xl text-center">{error}</div>;
+    if (loading) return (<Loading/>);
+    if (error) return (<Error/>);
 
     return (
         <section className="min-h-screen">
