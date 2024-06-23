@@ -1,7 +1,8 @@
 import useFetch from "../../model/hooks/useFetch";
 import { useParams } from "react-router-dom";
 
-import TypeProductDeatils from "../../model/@types/TypeProductDetails";
+import TypeProductDetails from "../../model/@types/TypeProductDetails";
+import { AppDispatch } from "../../model/redux/store";
 
 import SliderDesc from "./SliderDesc";
 import RandomStars from "../../ui/components/randomStars/RandomStars";
@@ -11,6 +12,8 @@ import Error from "../../ui/components/error/Error";
 
 import formatter from "../../model/utils/formatPrice";
 import ProductRelated from "./ProductRelated";
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../model/redux/cart/actions";
 
 interface TypePayment {
     id: string,
@@ -23,7 +26,9 @@ interface TypePayment {
 const ProductDetails: React.FC = () => {
     const { productId } = useParams();
 
-    const { data:detailsProduct, error, loading } = useFetch<TypeProductDeatils>(`https://api.mercadolibre.com/items/${productId}`);
+    const dispatch:AppDispatch = useDispatch();
+
+    const { data:detailsProduct, error, loading } = useFetch<TypeProductDetails>(`https://api.mercadolibre.com/items/${productId}`);
     const { data:paymentMethods, error:errorPayment, loading:loadingPayment } = useFetch<TypePayment[]>(`https://api.mercadolibre.com/sites/MLB/payment_methods`);
 
     if (loading || loadingPayment) return (<Loading/>);
@@ -31,6 +36,10 @@ const ProductDetails: React.FC = () => {
 
     const discountAmount: number = detailsProduct ? (detailsProduct?.original_price - detailsProduct?.price) : 0;
     const discount: string = detailsProduct ? ((discountAmount / detailsProduct?.original_price) * 100).toFixed(0) + "%" : "";
+
+    function handleProductClick(product:TypeProductDetails) {
+        dispatch(addProductToCart(product))
+    }
 
     return (
         <main className="min-h-screen p-6 flex flex-col text-lg space-y-6">
@@ -51,7 +60,7 @@ const ProductDetails: React.FC = () => {
                             <RandomStars classNames="md:text-2xl" />
                         </div>
 
-                        <button className="flex justify-between py-2 px-6 rounded-md bg-green-700 hover:bg-green-600">
+                        <button onClick={()=> handleProductClick(detailsProduct)} className="flex justify-between py-2 px-6 rounded-md bg-green-700 hover:bg-green-600">
                             Adicionar ao carrinho
                         </button>
 
