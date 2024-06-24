@@ -7,6 +7,7 @@ export default interface ProductDeatils {
     attributes: Attribute[];
     automatic_relist: boolean;
     base_price: number;
+    quantity?: number;
     buying_mode: string;
     catalog_listing: boolean;
     catalog_product_id: string;
