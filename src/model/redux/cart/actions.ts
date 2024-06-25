@@ -11,12 +11,12 @@ export const removeProductFromCart = (payload:TypeProductDetails) => ({
     payload,
 })
 
-export const increaseProductQuantity = (payload:TypeProductDetails)=> ({
+export const increaseProductQuantity = (payload:TypeProductDetails) => ({
     type: actionTypes.INCREASE_PRODUCT_QUANTITY,
     payload,
 })
 
-export const decrementProductQuantity = (payload:TypeProductDetails)=> ({
+export const decrementProductQuantity = (payload:TypeProductDetails) => ({
     type: actionTypes.DECREMENT_PRODUCT_QUANTITY,
     payload,
 })

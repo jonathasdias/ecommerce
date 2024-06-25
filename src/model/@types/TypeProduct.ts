@@ -9,6 +9,11 @@ export interface ProductType {
     condition: string;
 }
 
+export interface PagingType {
+    total: number
+}
+
 export default interface ApiResponse {
+    paging: PagingType;
     results: ProductType[];
 }
