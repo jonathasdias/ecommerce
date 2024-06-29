@@ -12,7 +12,9 @@ const Header: React.FC = () => {
 
     function handleSearchProduct(e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        navigate(`/products?search=${encodeURIComponent(search.trim())}`)
+        if(search !== "") {
+            navigate(`/products?search=${encodeURIComponent(search.trim())}`);
+        }
     }
 
     return (

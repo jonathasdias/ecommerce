@@ -42,29 +42,29 @@ const ProductDetails: React.FC = () => {
     }
 
     return (
-        <main className="min-h-screen p-6 flex flex-col text-lg space-y-6">
+        <main className="min-h-screen p-2 md:p-6 flex flex-col text-lg space-y-6">
             {
                 detailsProduct &&
-                <section className="flex items-center w-full min-h-[31rem] bg-white p-2 rounded-lg shadow-xl">
+                <section className="flex flex-col lg:flex-row items-center w-full min-h-[31rem] bg-white p-2 rounded-lg shadow-xl">
                     <SliderDesc pictures={detailsProduct.pictures} thumbnail={detailsProduct.thumbnail} />
 
                     <div className="p-6">
                         <h2 className="text-2xl">{detailsProduct.title}</h2>
 
-                        <div className="my-6 flex justify-between items-center">
+                        <div className="my-6 flex gap-x-2 items-center">
                             <div>
                                 {detailsProduct.original_price && <span className="text-red-700 line-through text-sm md:text-base">{formatter.format(detailsProduct?.original_price)}</span>}
-                                <p className="text-2xl md:text-5xl">{formatter.format(detailsProduct.price)}</p>
+                                <p className="text-2xl md:text-4xl xl:text-5xl">{formatter.format(detailsProduct.price)}</p>
                             </div>
 
-                            <RandomStars classNames="md:text-2xl" />
+                            <RandomStars classNames="md:text-xl" />
                         </div>
 
                         <button onClick={()=> handleProductClick(detailsProduct)} className="flex justify-between py-2 px-6 rounded-md bg-green-700 hover:bg-green-600">
                             Adicionar ao carrinho
                         </button>
 
-                        <div className="flex flex-nowrap mt-4">
+                        <div className="flex mt-4">
                             <div className="w-1/2">
                                 <h2 className="mb-4 text-lg">Informações do produto</h2>
 
@@ -86,7 +86,6 @@ const ProductDetails: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </section>
             }
