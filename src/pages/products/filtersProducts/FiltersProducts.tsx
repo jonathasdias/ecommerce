@@ -1,10 +1,10 @@
 // import { useState } from "react";
 import { useMemo, useState } from "react";
-import { Filters, ProductType } from "../../../model/@types/TypeProduct";
+import { FiltersType, ProductType } from "../../../model/@types/TypeProduct";
 import FilterDetails from "./FilterDeatils";
 import FilterProductsMobile from "./FilterProductsMobile";
 
-const FilterProducts: React.FC<{ filters: Filters[], results: ProductType[] }> = ({ filters, results }) => {
+const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] }> = ({ filters, results }) => {
 
     const [viewMore, setViewMore] = useState<boolean>(false);
 

@@ -1,6 +1,6 @@
 import Slideshow from "./Slideshow";
 import useFetch from "../../model/hooks/useFetch";
-import TypeProduct from '../../model/@types/TypeProduct';
+import ApiResponseType  from '../../model/@types/TypeProduct';
 import Loading from '../../ui/components/loading/Loading';
 import Error from '../../ui/components/error/Error';
 import CarouselProducts from './CarouselProducts';
@@ -13,8 +13,8 @@ interface TypeCategories {
 const Home: React.FC = () => {
     const quantityItems: number = 10;
 
-    const { data: vehicleProducts, error: errorVehicleProducts, loading: loadingVehicleProducts } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB5672&limit=${quantityItems}`)
-    const { data: personalCare, error: errorPersonalCare, loading: loadingPersonalCare } = useFetch<TypeProduct>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB1246&limit=${quantityItems}`)
+    const { data: vehicleProducts, error: errorVehicleProducts, loading: loadingVehicleProducts } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB5672&limit=${quantityItems}`)
+    const { data: personalCare, error: errorPersonalCare, loading: loadingPersonalCare } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?category=MLB1246&limit=${quantityItems}`)
     const { data: categories, error: errorCategories, loading: loadingCategories } = useFetch<TypeCategories[]>(`https://api.mercadolibre.com/sites/MLB/categories`)
 
     if (loadingVehicleProducts || loadingPersonalCare || loadingCategories) return (<Loading />);

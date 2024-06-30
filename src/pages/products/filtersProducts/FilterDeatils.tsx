@@ -1,6 +1,6 @@
-import { Filters } from "../../../model/@types/TypeProduct";
+import { FiltersType } from "../../../model/@types/TypeProduct";
 
-const FilterDetails: React.FC<{filtro: Filters}> = ({filtro}) => {
+const FilterDetails: React.FC<{filtro: FiltersType}> = ({filtro}) => {
     return (
         <>
             <h2 className="mb-2 font-black">{filtro.name}</h2>

@@ -26,7 +26,7 @@ export interface FiltersType {
     values: FilterValueType[];
 }
 
-export default interface ApiResponse {
+export default interface ApiResponseType {
     available_filters: FiltersType[];
     paging: PagingType;
     results: ProductType[];

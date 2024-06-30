@@ -1,9 +1,9 @@
-import { Filters } from "../../../model/@types/TypeProduct";
+import { FiltersType } from "../../../model/@types/TypeProduct";
 import { IoFilter } from "react-icons/io5";
 import { FaX, FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
 
-const FilterProductsMobile: React.FC<{ filters: Filters[] }> = ({ filters }) => {
+const FilterProductsMobile: React.FC<{ filters: FiltersType[] }> = ({ filters }) => {
 
     const [openFilter, setOpenFilter] = useState<boolean>(false);
     const [openItemFilter, setOpenItemFilter] = useState<string>("");

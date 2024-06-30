@@ -4,7 +4,7 @@ import Loading from "../../ui/components/loading/Loading";
 import Error from "../../ui/components/error/Error";
 import ButtonsPagination from "../../ui/components/buttonsPagination/ButtonsPagination";
 import { useState } from "react";
-import ApiResponse from "../../model/@types/TypeProduct";
+import ApiResponseType from "../../model/@types/TypeProduct";
 import FilterProducts from "./filtersProducts/FiltersProducts";
 import { lazy, Suspense } from "react";
 import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct";
@@ -18,7 +18,7 @@ const Products: React.FC = () => {
   const itemsPerPage: number = 40;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { data, error, loading } = useFetch<ApiResponse>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${currentPage}`);
+  const { data, error, loading } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${currentPage}`);
 
   if (loading) return (<Loading />);
   if (error) return (<Error />);
