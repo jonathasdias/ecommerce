@@ -13,21 +13,21 @@ export interface PagingType {
     total: number
 }
 
-interface FilterValue {
+interface FilterValueType {
     id?: string;
     name?: string;
     results?: number;
 }
 
-export interface Filters {
+export interface FiltersType {
     id: string;
     name: string;
     type: 'number' | 'range' | 'boolean' | 'text' | 'list' | 'STRING';
-    values: FilterValue[];
+    values: FilterValueType[];
 }
 
 export default interface ApiResponse {
-    available_filters: Filters[];
+    available_filters: FiltersType[];
     paging: PagingType;
     results: ProductType[];
 }

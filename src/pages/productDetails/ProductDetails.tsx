@@ -49,7 +49,7 @@ const ProductDetails: React.FC = () => {
                     <SliderDesc pictures={detailsProduct.pictures} thumbnail={detailsProduct.thumbnail} />
 
                     <div className="p-6">
-                        <h2 className="text-2xl">{detailsProduct.title}</h2>
+                        <h2 className="text-xl md:text-2xl">{detailsProduct.title}</h2>
 
                         <div className="my-6 flex gap-x-2 items-center">
                             <div>
@@ -99,11 +99,7 @@ const ProductDetails: React.FC = () => {
 
                     <hr className="my-6 w-1/2 mx-auto"/>
 
-                    <div className="px-2 border-black">
-                        <h2 className="text-2xl p-4">Produtos da mesma categoria</h2>
-
-                        <ProductRelated categoryId={detailsProduct.category_id}/>
-                    </div>
+                    <ProductRelated categoryId={detailsProduct.category_id}/>
 
                     <hr className="my-6 w-1/2 mx-auto"/>
 

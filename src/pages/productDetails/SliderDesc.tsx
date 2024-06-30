@@ -24,7 +24,7 @@ const SliderDesc:React.FC<SliderDesc> = ({thumbnail = "", pictures = []}) => {
 
     return (
         <div className="flex flex-nowrap border-2 w-full h-[26rem] md:h-[30rem] lg:w-[40rem] rounded-lg">
-            <div className="flex flex-col items-center flex-nowrap min-w-20 gap-y-1 overflow-x-hidden overflow-y-auto">
+            <div className="flex flex-col items-center flex-nowrap min-w-20 gap-y-1 py-1 overflow-x-hidden overflow-y-auto">
                 {pictures.map(item => (
                     <figure key={item.id + 1} onClick={() => handleClick(item)}
                     className={`${item.id === activeId ? activeClass : 'opacity-50'} flex-shrink-0 size-14 rounded-lg cursor-pointer overflow-hidden shadow-lg`}>
