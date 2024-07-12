@@ -22,10 +22,10 @@ const CardProductCart: React.FC<{product: TypeProductDetails}> = ({ product }) =
     }
 
     return (
-        <div key={product.id} className="flex flex-col md:flex-row justify-between items-center gap-2 p-4 border-b border-gray-300 text-white">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-2 p-4 border-b border-gray-300 text-white">
             <img src={product.thumbnail} alt={product.title} className="h-full"/>
 
-            <div className="space-y-2">
+            <div className="space-y-2 sm:max-w-[26rem]">
                 <p className="text-base text-wrap overflow-hidden text-ellipsis line-clamp-2">{product.title}</p>
                 <p className="text-lg text-green-600">{formatter.format(product.price)}</p>
                 <p>Estoque: {product.initial_quantity}</p>

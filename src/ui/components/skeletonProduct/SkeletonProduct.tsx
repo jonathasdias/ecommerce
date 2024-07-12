@@ -1,6 +1,6 @@
-const SkeletonProduct: React.FC = () => {
+const SkeletonProduct: React.FC<{classNames?: string}> = ({classNames}) => {
     return (
-        <div className="animate-pulse border border-blue-300 space-y-4 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+        <div className={`${classNames} animate-pulse border border-blue-300 space-y-4 shadow rounded-md p-4`}>
             <div className="bg-slate-700 w-full h-48"></div>
 
             <div className="space-y-2">

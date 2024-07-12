@@ -1,8 +1,12 @@
 import 'swiper/swiper-bundle.css';
-import { ProductType } from '../../model/@types/TypeProduct';
-import CardProduct from "../../ui/components/cardProduct/CardProduct";
+import { ProductType } from '../../../model/@types/TypeProduct';
+import { lazy, Suspense } from 'react';
+import SkeletonProduct from '../skeletonProduct/SkeletonProduct';
 
 const CarouselProducts: React.FC<{ itemsCarousel: ProductType[], title: string }> = ({ itemsCarousel, title }) => {
+
+    const CardProduct = lazy(()=> import("../cardProduct/CardProduct"));
+
     return (
         <section className="bg-white p-2 sm:p-6">
             <h2 className="text-lg sm:text-2xl mb-4 p-4">{title}</h2>
@@ -33,7 +37,9 @@ const CarouselProducts: React.FC<{ itemsCarousel: ProductType[], title: string }
                     })}
                 >
                     {itemsCarousel.map((product) => (
-                        <CardProduct key={product.id} product={product} classNames="swiper-slide"/>
+                        <Suspense key={product.id} fallback={<SkeletonProduct classNames='swiper-slide'/>}>
+                            <CardProduct product={product} classNames="swiper-slide"/>
+                        </Suspense>
                     ))}
                 </swiper-container>
             }

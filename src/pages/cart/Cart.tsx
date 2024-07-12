@@ -1,11 +1,12 @@
 import { RootState } from "../../model/redux/store";
-import { useSelector } from "react-redux";
-
-import EmptyCard from "./EmptyCard";
-import CardProductCart from "../../ui/components/cardProductCart/CardProductCart";
-import PurchaseStepsPanel from "./PurchaseStepsPanel";
-import { useMemo } from "react";
 import formatter from "../../model/utils/formatPrice";
+
+import CardProductCart from "../../ui/components/cardProductCart/CardProductCart";
+import EmptyCard from "./EmptyCard";
+import PurchaseStepsPanel from "./PurchaseStepsPanel";
+
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
 
 const Cart: React.FC = () => {
 
@@ -27,13 +28,12 @@ const Cart: React.FC = () => {
                 </section>
             }
 
-
             <section className="flex flex-col gap-x-4 p-2  min-h-[70vh] w-[98%] md:w-[66vw] mx-auto">
 
                 {products && products.length > 0 ? (
 
-                    products.map(product=> (
-                        <CardProductCart product={product}/>
+                    products.map(product => (
+                        <CardProductCart key={product.id} product={product}/>
                     )
 
                 )) : <EmptyCard />}

@@ -4,7 +4,7 @@ import Banner_3 from '../../ui/imgs/banners/banner-3.png';
 import Banner_4 from '../../ui/imgs/banners/banner-4.png';
 import Banner_5 from '../../ui/imgs/banners/banner-5.png';
 import Banner_6 from '../../ui/imgs/banners/banner-6.png';
-import Banner_7 from '../../ui/imgs/banners/banner-6.png';
+import Banner_7 from '../../ui/imgs/banners/banner-7.png';
 
 const Slideshow:React.FC = () => {
     return (

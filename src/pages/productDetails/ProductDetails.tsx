@@ -102,10 +102,6 @@ const ProductDetails: React.FC = () => {
                     <ProductRelated categoryId={detailsProduct.category_id}/>
 
                     <hr className="my-6 w-1/2 mx-auto"/>
-
-                    <div>
-                        {/* comentarios */}
-                    </div>
                 </section>
             }
         </main>

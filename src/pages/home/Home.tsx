@@ -3,7 +3,7 @@ import useFetch from "../../model/hooks/useFetch";
 import ApiResponseType  from '../../model/@types/TypeProduct';
 import Loading from '../../ui/components/loading/Loading';
 import Error from '../../ui/components/error/Error';
-import CarouselProducts from './CarouselProducts';
+import CarouselProducts from '../../ui/components/carouselProducts/CarouselProducts';
 
 interface TypeCategories {
     id: string,
