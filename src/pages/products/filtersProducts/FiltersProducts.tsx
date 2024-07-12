@@ -30,7 +30,7 @@ const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] 
                             <div key={filtro.id}>
                                 <FilterDetails filtro={filtro} />
 
-                                <div className="mt-2">  {/* Substituído <p> por <div> */}
+                                <div className="mt-2"> 
                                     <div className="flex items-center">
                                         <input type="number" onChange={(e) => setMaxPrice(parseFloat(e.target.value))} className="w-full p-1 rounded" min={0} placeholder="Máximo" />
 
