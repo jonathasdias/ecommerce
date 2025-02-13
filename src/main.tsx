@@ -10,8 +10,11 @@ import Products from './pages/products/Products.tsx'
 import { register } from 'swiper/element/bundle';
 import ProductDetails from './pages/productDetails/ProductDetails.tsx'
 import Cart from './pages/cart/Cart.tsx'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 
 register();
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([{
   element: <App />,
@@ -26,8 +29,10 @@ const router = createBrowserRouter([{
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
