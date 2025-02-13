@@ -6,14 +6,14 @@ interface TypeCategories {
     name: string
 }
 
-const GetCategories = (url: string) => {
+const GetCategories = () => {
   const source: CancelTokenSource = axios.CancelToken.source();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const response = await axios({
-        url,
+        url: "https://api.mercadolibre.com/sites/MLB/categories",
         cancelToken: source.token,
       });
       const data:TypeCategories[] = response.data;

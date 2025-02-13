@@ -2,17 +2,7 @@ import RandomStars from "../randomStars/RandomStars";
 import { Link } from "react-router-dom";
 import formatter from "../../../model/utils/formatPrice";
 import regexImproveImageQuality from "../../../model/utils/regexImproveImageQuality";
-
-interface ProductType {
-    id: string;
-    title: string;
-    price: number;
-    original_price: number;
-    available_quantity: number;
-    thumbnail: string;
-    permalink: string;
-    condition: string;
-}
+import { ProductType } from "../../../model/@types/TypeProduct";
 
 interface CardProductProps {
     product: ProductType;

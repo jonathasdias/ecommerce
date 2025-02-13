@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import ApiResponseType from "../../model/@types/TypeProduct";
 import useFetch from "../../model/hooks/useFetch";
@@ -14,27 +13,19 @@ import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct
 
 const Products: React.FC = () => {
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const search = searchParams.get('search') || '';
-
   const itemsPerPage: number = 40;
-  const [currentPage, setCurrentPage] = useState(1);
+  const page:number = searchParams.get('page') ? Number(searchParams.get('page')) : 1;
+  const { data, error, isLoading } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${page}`);
 
-  const { data, error, loading } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${currentPage}`);
 
-  if (loading) return (<Loading />);
+  if (isLoading) return (<Loading />);
   if (error) return (<Error />);
-
   if(data?.results.length === 0) return <main className="h-[80vh]"><h1 className="mx-auto font-bold text-2xl text-center mt-20">Não encontramos o produto!!</h1></main>; 
 
   const CardProduct = lazy(()=> import("../../ui/components/cardProduct/CardProduct"))
-
   const totalPages: number = Math.ceil(data?.paging.total as number / itemsPerPage);
-
-  const handlePageChange = (page: number): void => {
-    setCurrentPage(page);
-  };
 
   return (
     <main>
@@ -50,12 +41,10 @@ const Products: React.FC = () => {
                 </Suspense>
               ))}
           </div>
+
+          {data && <ButtonsPagination currentPage={page} totalPages={totalPages} />}
         </section>
-
-
       </div>
-
-      {data && <ButtonsPagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />}
     </main>
   )
 }

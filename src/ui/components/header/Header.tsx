@@ -1,27 +1,18 @@
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from '../../imgs/logo.png';
 import { FaSearch } from "react-icons/fa";
 import ButtonCart from "./ButtonCart";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header: React.FC = () => {
 
-    const navigate = useNavigate();
-
-    const location = useLocation();    
-
+    const navigate = useNavigate();  
     const [ search, setSearch ] = useState<string>("");
-
-    useEffect(() => {
-        if(location.pathname === "/") {
-            setSearch("");
-        }
-    }, [location.pathname])
     
     function handleSearchProduct(e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         if(search !== "") {
-            navigate(`/products?search=${encodeURIComponent(search.trim())}`);
+            navigate(`/products?search=${encodeURIComponent(search.trim())}&page=1`);
         }
     }
 
@@ -56,4 +47,5 @@ const Header: React.FC = () => {
         </header>
     )
 }
+
 export default Header;

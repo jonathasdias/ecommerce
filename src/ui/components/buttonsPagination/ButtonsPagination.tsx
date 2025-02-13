@@ -1,23 +1,44 @@
 import React from 'react';
 import { FaLeftLong, FaRightLong } from 'react-icons/fa6';
+import { useSearchParams } from "react-router-dom";
 
 interface ButtonsPaginationProps {
     currentPage: number;
     totalPages: number;
-    onPageChange: (page: number) => void;
 }
 
-const ButtonsPagination: React.FC<ButtonsPaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
+const ButtonsPagination: React.FC<ButtonsPaginationProps> = ({ currentPage, totalPages }) => {
+
+    const [, setSearchParams] = useSearchParams();
+
+    const onPageChange = (page: number): void => {
+        setSearchParams(params => {
+          params.set('page', page.toString());
+          return params
+        });
+    };
+
     const handlePrevious = () => {
-        if (currentPage > 1) {
-            onPageChange(currentPage - 1);
+
+        if(currentPage - 1 <= 0) {
+            return
         }
+
+        setSearchParams(params => {
+            params.set('page', (currentPage - 1).toString());
+            return params
+        });
     };
 
     const handleNext = () => {
-        if (currentPage < totalPages) {
-            onPageChange(currentPage + 1);
+        if(currentPage + 1 > totalPages) {
+            return
         }
+
+        setSearchParams(params => {
+            params.set('page', (currentPage + 1).toString());
+            return params
+        });
     };
 
     const renderPageNumbers = () => {
