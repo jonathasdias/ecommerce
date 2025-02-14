@@ -1,4 +1,3 @@
-import useFetch from "../../model/hooks/useFetch";
 import { useParams } from "react-router-dom";
 
 import TypeProductDetails from "../../model/@types/TypeProductDetails";
@@ -12,24 +11,20 @@ import Error from "../../ui/components/error/Error";
 
 import formatter from "../../model/utils/formatPrice";
 import ProductRelated from "./ProductRelated";
+
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../model/redux/cart/actions";
 
-interface TypePayment {
-    id: string,
-    name: string,
-    payment_type_id: string,
-    thumbnail: string,
-    secure_thumbnail: string
-}
+import GetProductPerId from "../../model/api/GetProductPerId";
+import GetPaymentMethods from "../../model/api/GetPaymentMethods";
 
 const ProductDetails: React.FC = () => {
-    const { productId } = useParams();
 
+    const { productId } = useParams();
     const dispatch:AppDispatch = useDispatch();
 
-    const { data:detailsProduct, error, isLoading } = useFetch<TypeProductDetails>(`https://api.mercadolibre.com/items/${productId}`);
-    const { data:paymentMethods, error:errorPayment, isLoading:loadingPayment } = useFetch<TypePayment[]>(`https://api.mercadolibre.com/sites/MLB/payment_methods`);
+    const { data:detailsProduct, error, isLoading } = GetProductPerId(productId || "");
+    const { data:paymentMethods, error:errorPayment, isLoading:loadingPayment } = GetPaymentMethods();
 
     if (isLoading || loadingPayment) return (<Loading/>);
     if (error || errorPayment) return (<Error/>);

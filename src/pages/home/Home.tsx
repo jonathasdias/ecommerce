@@ -10,6 +10,7 @@ const Home: React.FC = () => {
 
     // Adicionar a nova forma de consumir a api nos outros componentes
     // Lembrar de corrigir filtersProducts e ver se cabe colocar na pasta components
+    // Lembrar de criar pagina about ou removela
     // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 
     const categoryIds = {
