@@ -7,6 +7,8 @@ import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
 
 const Home: React.FC = () => {
 
+    // Adicionar a nova forma de consumir a api nos outros componentes
+
     const categoryIds = {
         vehicle: "MLB5672",
         personalCare: "MLB1246"
