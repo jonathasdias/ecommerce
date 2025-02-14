@@ -7,7 +7,7 @@ const FilterDetails: React.FC<{filtro: FiltersType}> = ({filtro}) => {
 
             <ul>
                 {filtro.values.map(value => (
-                    <li key={value.id}>
+                    <li key={value.id} className="border-b border-gray-300 py-1">
                         <button type="button" aria-label={"filtro" + value.name} className="hover:text-blue-500">
                             {value.name} ({value.results})
                         </button>

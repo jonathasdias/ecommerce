@@ -32,7 +32,7 @@ const FilterProductsMobile: React.FC<{ filters: FiltersType[] }> = ({ filters })
                     <h1 className="p-6 text-3xl border-b">Filtrar por</h1>
 
                     {filters.map(filtro => (
-                        <>
+                        <div key={filtro.id}>
                             <h2 onClick={()=> setOpenItemFilter(filtro.id)} className="flex justify-between items-center p-6 border-b">
                                 {filtro.name}
                                 <FaAngleDown className="text-blue-500" />
@@ -45,7 +45,7 @@ const FilterProductsMobile: React.FC<{ filters: FiltersType[] }> = ({ filters })
                                     </button>
                                 ))}
                             </div>
-                        </>
+                        </div>
                     ))}
                 </div>
             }

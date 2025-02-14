@@ -8,7 +8,10 @@ import Category from "../../ui/components/category/Category";
 
 const Home: React.FC = () => {
 
-    // Lembrar de corrigir filtersProducts e ver se cabe colocar na pasta components
+    // Lembrar de olhar productDetails e ver se coloca em componente ProductRelated
+    // Lembrar de corrigir lazy, suspense e skeleton
+    // Jogar no chatgpt como melhorar a performace dessa home page
+    // Lembrar de adicionar alias, procurar no youtube salvo ou chatgpt
     // Testar de colocar a lista de categorias no topo da exibição dos produtos da pagina de pesquisa e de categorias
     // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 

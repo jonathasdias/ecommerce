@@ -11,7 +11,7 @@ const FilterProducts: React.FC<{ filters: FiltersType[] }> = ({ filters }) => {
         <section>
             <FilterProductsMobile filters={filters} />
 
-            <div className="min-w-52 w-1/4 p-2 lg:p-4 space-y-6 hidden md:block">
+            <div className="min-w-52 w-full p-2 lg:p-4 space-y-6 hidden md:block">
 
                 <h1 className="text-3xl font-black">Filtros</h1>
 
