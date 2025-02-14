@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import Loading from "../../ui/components/loading/Loading";
 import Error from "../../ui/components/error/Error";
 import ButtonsPagination from "../../ui/components/buttonsPagination/ButtonsPagination";
-import FilterProducts from "./filtersProducts/FiltersProducts";
+import FilterProducts from "../../ui/components/filtersProducts/FiltersProducts";
 import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct";
 import GetSearchProducts from "../../model/api/GetSearchProducts";
 

@@ -8,9 +8,8 @@ import Category from "../../ui/components/category/Category";
 
 const Home: React.FC = () => {
 
-    // Adicionar a nova forma de consumir a api nos outros componentes
     // Lembrar de corrigir filtersProducts e ver se cabe colocar na pasta components
-    // Lembrar de criar pagina about ou removela
+    // Testar de colocar a lista de categorias no topo da exibição dos produtos da pagina de pesquisa e de categorias
     // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 
     const categoryIds = {
@@ -35,7 +34,6 @@ const Home: React.FC = () => {
                 <h2 className='text-lg sm:text-2xl p-4'>Categorias</h2>
 
                 <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
-                {/* Criar pagina de produtos por categoria */}
                     {categories &&
                         categories.map(category => <Category key={category.id} category={category} />)
                     }

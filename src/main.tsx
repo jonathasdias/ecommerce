@@ -11,6 +11,7 @@ import { register } from 'swiper/element/bundle';
 import ProductDetails from './pages/productDetails/ProductDetails.tsx'
 import Cart from './pages/cart/Cart.tsx'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+import ProductsByCategory from './pages/productsByCategory/ProductsByCategory.tsx'
 
 register();
 
@@ -23,6 +24,7 @@ const router = createBrowserRouter([{
     {path: '/', element: <Home />},
     {path: '/products', element: <Products />},
     {path: '/products/:productId', element: <ProductDetails />},
+    {path: '/products/categories', element: <ProductsByCategory />},
     {path: '/cart', element: <Cart />},
   ]
 }])
