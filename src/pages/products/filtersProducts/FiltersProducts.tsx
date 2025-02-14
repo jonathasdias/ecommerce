@@ -1,19 +1,11 @@
-import { useMemo, useState } from "react";
-import { FiltersType, ProductType } from "../../../model/@types/TypeProduct";
-import FilterDetails from "./FilterDeatils";
+import { useState } from "react";
+import { FiltersType } from "../../../model/@types/TypeProduct";
+import FilterDetails from "./FilterDetails";
 import FilterProductsMobile from "./FilterProductsMobile";
 
-const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] }> = ({ filters, results }) => {
+const FilterProducts: React.FC<{ filters: FiltersType[] }> = ({ filters }) => {
 
     const [viewMore, setViewMore] = useState<boolean>(false);
-
-    // const [maxPrice, setMaxPrice] = useState<number>(0);
-    // const [minPrice, setMinPrice] = useState<number>(0);
-
-    // const filterPerPrice = useMemo(() => {
-    //     const filters = results.filter(product => product.price >= minPrice && product.price <= maxPrice);
-    //     return filters;
-    // }, [minPrice, maxPrice])
 
     return (
         <section>
@@ -32,11 +24,11 @@ const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] 
 
                                 <div className="mt-2"> 
                                     <div className="flex items-center">
-                                        <input type="number" onChange={(e) => setMaxPrice(parseFloat(e.target.value))} className="w-full p-1 rounded" min={0} placeholder="Máximo" />
+                                        <input type="number" className="w-full p-1 rounded" min={0} placeholder="Máximo" />
 
                                         <span className="mx-2">-</span>
 
-                                        <input type="number" onChange={(e) => setMinPrice(parseFloat(e.target.value))} className="w-full p-1 rounded" min={0} placeholder="Mínimo" />
+                                        <input type="number" className="w-full p-1 rounded" min={0} placeholder="Mínimo" />
                                     </div>
 
                                     <button className="bg-green-600 px-1 rounded mt-2">Aplicar</button>

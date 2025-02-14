@@ -28,7 +28,7 @@ const Products: React.FC = () => {
     <main>
       <div className="min-h-screen block md:flex">
 
-        {data && <FilterProducts filters={data?.available_filters} results={data?.results}/>}
+        {data && <FilterProducts filters={data?.available_filters} />}
 
         <section className="w-full">
           <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 w-full md:gap-2 my-8 p-1 sm:p-2">
