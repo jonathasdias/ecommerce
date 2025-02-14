@@ -2,15 +2,15 @@ import axios, { CancelTokenSource } from "axios";
 import { useQuery } from "@tanstack/react-query";
 import ApiResponseType from "../@types/TypeProduct";
 
-const GetProductsPerCategory = (categoryId: string, offset: number = 0, limit: number = 10) => {
+const GetSearchProducts = (search: string, offset: number = 1, limit: number = 20) => {
 
     const source: CancelTokenSource = axios.CancelToken.source();
 
     const { data, isLoading, error } = useQuery({
-        queryKey: ["productsPerCategory"],
+        queryKey: ["searchProducts", offset, search],
         queryFn: async () => {
             const response = await axios({
-                url: `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&offset=${offset}&limit=${limit}`,
+                url: `https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&offset=${offset}&limit=${limit}`,
                 cancelToken: source.token,
             });
             const data:ApiResponseType = response.data;
@@ -28,4 +28,4 @@ const GetProductsPerCategory = (categoryId: string, offset: number = 0, limit: n
     return { data, isLoading, error };
 }
  
-export default GetProductsPerCategory;
+export default GetSearchProducts;

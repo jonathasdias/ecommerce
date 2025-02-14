@@ -1,15 +1,12 @@
 import { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import ApiResponseType from "../../model/@types/TypeProduct";
-import useFetch from "../../model/hooks/useFetch";
-
 import Loading from "../../ui/components/loading/Loading";
 import Error from "../../ui/components/error/Error";
 import ButtonsPagination from "../../ui/components/buttonsPagination/ButtonsPagination";
 import FilterProducts from "./filtersProducts/FiltersProducts";
 import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct";
-
+import GetSearchProducts from "../../model/api/GetSearchProducts";
 
 const Products: React.FC = () => {
 
@@ -17,7 +14,7 @@ const Products: React.FC = () => {
   const search = searchParams.get('search') || '';
   const itemsPerPage: number = 40;
   const page:number = searchParams.get('page') ? Number(searchParams.get('page')) : 1;
-  const { data, error, isLoading } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&limit=${itemsPerPage}&offset=${page}`);
+  const { data, error, isLoading } = GetSearchProducts(search, page, itemsPerPage);
 
 
   if (isLoading) return (<Loading />);

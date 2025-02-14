@@ -28,10 +28,10 @@ const ProductDetails: React.FC = () => {
 
     const dispatch:AppDispatch = useDispatch();
 
-    const { data:detailsProduct, error, loading } = useFetch<TypeProductDetails>(`https://api.mercadolibre.com/items/${productId}`);
-    const { data:paymentMethods, error:errorPayment, loading:loadingPayment } = useFetch<TypePayment[]>(`https://api.mercadolibre.com/sites/MLB/payment_methods`);
+    const { data:detailsProduct, error, isLoading } = useFetch<TypeProductDetails>(`https://api.mercadolibre.com/items/${productId}`);
+    const { data:paymentMethods, error:errorPayment, isLoading:loadingPayment } = useFetch<TypePayment[]>(`https://api.mercadolibre.com/sites/MLB/payment_methods`);
 
-    if (loading || loadingPayment) return (<Loading/>);
+    if (isLoading || loadingPayment) return (<Loading/>);
     if (error || errorPayment) return (<Error/>);
 
     const discountAmount: number = detailsProduct ? (detailsProduct?.original_price - detailsProduct?.price) : 0;

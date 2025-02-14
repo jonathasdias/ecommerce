@@ -2,12 +2,15 @@ import Slideshow from "./Slideshow";
 import Loading from '../../ui/components/loading/Loading';
 import Error from '../../ui/components/error/Error';
 import CarouselProducts from '../../ui/components/carouselProducts/CarouselProducts';
-import GetCategories from "../../model/api/getCategories";
+import GetCategories from "../../model/api/GetCategories";
 import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
+import Category from "../../ui/components/category/Category";
 
 const Home: React.FC = () => {
 
     // Adicionar a nova forma de consumir a api nos outros componentes
+    // Lembrar de corrigir filtersProducts e ver se cabe colocar na pasta components
+    // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 
     const categoryIds = {
         vehicle: "MLB5672",
@@ -31,9 +34,9 @@ const Home: React.FC = () => {
                 <h2 className='text-lg sm:text-2xl p-4'>Categorias</h2>
 
                 <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
-                    {/* Criar componente de categorias onde sera passada para o componente os dados de category e fazer eles funcionarem. */}
+                {/* Criar pagina de produtos por categoria */}
                     {categories &&
-                        categories.map(category => <p key={category.id} className='p-4 text-nowrap text-sm md:text-lg bg-gray-200 rounded-md'>{category.name}</p>)
+                        categories.map(category => <Category category={category} />)
                     }
                 </div>
             </section>

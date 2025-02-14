@@ -7,13 +7,13 @@ const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] 
 
     const [viewMore, setViewMore] = useState<boolean>(false);
 
-    const [maxPrice, setMaxPrice] = useState<number>(0);
-    const [minPrice, setMinPrice] = useState<number>(0);
+    // const [maxPrice, setMaxPrice] = useState<number>(0);
+    // const [minPrice, setMinPrice] = useState<number>(0);
 
-    const filterPerPrice = useMemo(() => {
-        const filters = results.filter(product => product.price >= minPrice && product.price <= maxPrice);
-        return filters;
-    }, [minPrice, maxPrice])
+    // const filterPerPrice = useMemo(() => {
+    //     const filters = results.filter(product => product.price >= minPrice && product.price <= maxPrice);
+    //     return filters;
+    // }, [minPrice, maxPrice])
 
     return (
         <section>
@@ -39,7 +39,7 @@ const FilterProducts: React.FC<{ filters: FiltersType[], results: ProductType[] 
                                         <input type="number" onChange={(e) => setMinPrice(parseFloat(e.target.value))} className="w-full p-1 rounded" min={0} placeholder="Mínimo" />
                                     </div>
 
-                                    <button onClick={() => console.log(filterPerPrice)} className="bg-green-600 px-1 rounded mt-2">Aplicar</button>
+                                    <button className="bg-green-600 px-1 rounded mt-2">Aplicar</button>
                                 </div>
 
                             </div>
