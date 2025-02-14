@@ -1,10 +1,12 @@
-import ApiResponseType from "../../model/@types/TypeProduct";
-import useFetch from "../../model/hooks/useFetch";
+import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
 import CardProduct from "../../ui/components/cardProduct/CardProduct";
 
 const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
 
-    const { data:relatedProducts } = useFetch<ApiResponseType>(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&limit=20`);
+    const limit:number = 20;
+    const page:number = 0;
+
+    const { data:relatedProducts } = GetProductsPerCategory(categoryId, page, limit);
 
     return (
         <div className="px-2 border-black">
@@ -20,4 +22,5 @@ const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
         </div>
     )
 }
+
 export default ProductRelated;

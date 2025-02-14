@@ -6,15 +6,14 @@ const GetProductPerId = (productId: string) => {
      
     const source: CancelTokenSource = axios.CancelToken.source();
 
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error } = useQuery<ProductDetails>({
         queryKey: ["items", productId],
         queryFn: async () => {
             const response = await axios({
                 url: `https://api.mercadolibre.com/items/${productId}`,
                 cancelToken: source.token,
             });
-            const data:ProductDetails = response.data;
-            return data;
+            return response.data;
         },
         staleTime: 10000,
     });

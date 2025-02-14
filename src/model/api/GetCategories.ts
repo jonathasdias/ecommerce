@@ -9,15 +9,14 @@ interface TypeCategory {
 const GetCategories = () => {
   const source: CancelTokenSource = axios.CancelToken.source();
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery<TypeCategory[]>({
     queryKey: ["categories"],
     queryFn: async () => {
       const response = await axios({
         url: "https://api.mercadolibre.com/sites/MLB/categories",
         cancelToken: source.token,
       });
-      const data: TypeCategory[] = response.data;
-      return data;
+      return response.data;
     },
     staleTime: 10000,
   });

@@ -37,7 +37,7 @@ const Home: React.FC = () => {
                 <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
                 {/* Criar pagina de produtos por categoria */}
                     {categories &&
-                        categories.map(category => <Category category={category} />)
+                        categories.map(category => <Category key={category.id} category={category} />)
                     }
                 </div>
             </section>

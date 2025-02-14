@@ -6,15 +6,14 @@ const GetSearchProducts = (search: string, offset: number = 1, limit: number = 2
 
     const source: CancelTokenSource = axios.CancelToken.source();
 
-    const { data, isLoading, error } = useQuery({
+    const { data, isLoading, error } = useQuery<ApiResponseType>({
         queryKey: ["searchProducts", offset, search],
         queryFn: async () => {
             const response = await axios({
                 url: `https://api.mercadolibre.com/sites/MLB/search?q=${search.trim()}&offset=${offset}&limit=${limit}`,
                 cancelToken: source.token,
             });
-            const data:ApiResponseType = response.data;
-            return data;
+            return response.data;
         },
         staleTime: 10000,
     });

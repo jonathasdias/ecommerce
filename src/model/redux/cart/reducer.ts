@@ -1,8 +1,8 @@
 import actionTypes from "./actionTypes"
-import ProductDeatils from "../../@types/TypeProductDetails"
+import ProductDetails from "../../@types/TypeProductDetails"
 
 interface TypeInitialState {
-    products: ProductDeatils[],
+    products: ProductDetails[],
     productsTotalPrice: number
 }
 
