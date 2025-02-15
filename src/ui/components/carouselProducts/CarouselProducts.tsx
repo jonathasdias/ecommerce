@@ -3,10 +3,9 @@ import { ProductType } from '../../../model/@types/TypeProduct';
 import { lazy, Suspense } from 'react';
 import SkeletonProduct from '../skeletonProduct/SkeletonProduct';
 
+const CardProduct = lazy(()=> import("../cardProduct/CardProduct"));
+
 const CarouselProducts: React.FC<{ itemsCarousel: ProductType[], title: string }> = ({ itemsCarousel, title }) => {
-
-    const CardProduct = lazy(()=> import("../cardProduct/CardProduct"));
-
     return (
         <section className="bg-white p-2 sm:p-6">
             <h2 className="text-lg sm:text-2xl mb-4 p-4">{title}</h2>

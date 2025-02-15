@@ -5,11 +5,11 @@ interface TypeCategory {
   name: string;
 }
 
-const Category: React.FC<{ category: TypeCategory }> = ({ category }) => {
+const Category: React.FC<{ category: TypeCategory, classNames: string }> = ({ category, classNames }) => {
   return (
     <Link
       to={`/products/categories?search=${category.id}&page=1`}
-      className="p-4 text-nowrap text-sm md:text-lg bg-gray-200 rounded-md"
+      className={`${classNames}`}
     >
       {category.name}
     </Link>
