@@ -1,22 +1,22 @@
 import { useParams } from "react-router-dom";
 
-import TypeProductDetails from "../../model/@types/TypeProductDetails";
-import { AppDispatch } from "../../model/redux/store";
+import TypeProductDetails from "@/model/@types/TypeProductDetails";
+import { AppDispatch } from "@redux/store";
 
 import SliderDesc from "./SliderDesc";
-import RandomStars from "../../ui/components/randomStars/RandomStars";
+import RandomStars from "@components/randomStars/RandomStars";
 import TableAttributes from "./TableAttributes";
-import Loading from "../../ui/components/loading/Loading";
-import Error from "../../ui/components/error/Error";
+import Loading from "@components/loading/Loading";
+import Error from "@components/error/Error";
 
-import formatter from "../../model/utils/formatPrice";
+import formatter from "@utils/formatPrice";
 import ProductRelated from "./ProductRelated";
 
 import { useDispatch } from "react-redux";
-import { addProductToCart } from "../../model/redux/cart/actions";
+import { addProductToCart } from "@redux/cart/actions";
 
-import GetProductPerId from "../../model/api/GetProductPerId";
-import GetPaymentMethods from "../../model/api/GetPaymentMethods";
+import GetProductPerId from "@api/GetProductPerId";
+import GetPaymentMethods from "@api/GetPaymentMethods";
 
 const ProductDetails: React.FC = () => {
 

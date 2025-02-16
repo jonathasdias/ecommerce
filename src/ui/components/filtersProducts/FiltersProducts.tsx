@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiltersType } from "../../../model/@types/TypeProduct";
+import { FiltersType } from "@/model/@types/TypeProduct";
 import FilterDetails from "./FilterDetails";
 import FilterProductsMobile from "./FilterProductsMobile";
 

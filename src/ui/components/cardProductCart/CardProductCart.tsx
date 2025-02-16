@@ -1,9 +1,9 @@
 import { LuMinusCircle, LuPlusCircle } from "react-icons/lu";
-import TypeProductDetails from "../../../model/@types/TypeProductDetails";
-import formatter from "../../../model/utils/formatPrice";
+import TypeProductDetails from "@/model/@types/TypeProductDetails";
+import formatter from "@utils/formatPrice";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../model/redux/store";
-import { removeProductFromCart, increaseProductQuantity, decrementProductQuantity } from "../../../model/redux/cart/actions";
+import { AppDispatch } from "@redux/store";
+import { removeProductFromCart, increaseProductQuantity, decrementProductQuantity } from "@redux/cart/actions";
 
 const CardProductCart: React.FC<{product: TypeProductDetails}> = ({ product }) => {
 

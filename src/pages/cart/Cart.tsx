@@ -1,7 +1,7 @@
-import { RootState } from "../../model/redux/store";
-import formatter from "../../model/utils/formatPrice";
+import { RootState } from "@redux/store";
+import formatter from "@utils/formatPrice";
 
-import CardProductCart from "../../ui/components/cardProductCart/CardProductCart";
+import CardProductCart from "@components/cardProductCart/CardProductCart";
 import EmptyCard from "./EmptyCard";
 import PurchaseStepsPanel from "./PurchaseStepsPanel";
 

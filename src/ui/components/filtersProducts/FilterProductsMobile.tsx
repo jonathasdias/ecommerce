@@ -1,4 +1,4 @@
-import { FiltersType } from "../../../model/@types/TypeProduct";
+import { FiltersType } from "@/model/@types/TypeProduct";
 import { IoFilter } from "react-icons/io5";
 import { FaX, FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";

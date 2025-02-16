@@ -1,5 +1,9 @@
-import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
-import CardProduct from "../../ui/components/cardProduct/CardProduct";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import GetProductsPerCategory from "@api/GetProductsPerCategory";
+import CardProduct from "@components/cardProduct/CardProduct";
+
 
 const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
 
@@ -7,6 +11,12 @@ const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
     const page:number = 0;
 
     const { data:relatedProducts } = GetProductsPerCategory(categoryId, page, limit);
+
+    const { productId } = useParams();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [productId]);
 
     return (
         <div className="px-2 border-black">

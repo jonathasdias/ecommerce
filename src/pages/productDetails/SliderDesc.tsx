@@ -1,5 +1,5 @@
 import { useState } from "react";
-import regexImproveImageQuality from "../../model/utils/regexImproveImageQuality";
+import regexImproveImageQuality from "@utils/regexImproveImageQuality";
 
 interface SliderDesc {
     pictures: Pictures[],

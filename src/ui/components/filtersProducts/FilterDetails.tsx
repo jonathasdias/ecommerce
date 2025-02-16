@@ -1,4 +1,4 @@
-import { FiltersType } from "../../../model/@types/TypeProduct";
+import { FiltersType } from "@/model/@types/TypeProduct";
 
 const FilterDetails: React.FC<{filtro: FiltersType}> = ({filtro}) => {
     return (

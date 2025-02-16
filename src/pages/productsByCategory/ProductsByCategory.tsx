@@ -1,15 +1,17 @@
 import { lazy, Suspense } from "react";
-import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct";
-import FilterProducts from "../../ui/components/filtersProducts/FiltersProducts";
 import { useSearchParams } from "react-router-dom";
-import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
-import Loading from "../../ui/components/loading/Loading";
-import Error from "../../ui/components/error/Error";
-import ButtonsPagination from "../../ui/components/buttonsPagination/ButtonsPagination";
-import GetCategories from "../../model/api/GetCategories";
-import Category from "../../ui/components/category/Category";
 
-const CardProduct = lazy(()=> import("../../ui/components/cardProduct/CardProduct"));
+import SkeletonProduct from "@components/skeletonProduct/SkeletonProduct";
+import FilterProducts from "@components/filtersProducts/FiltersProducts";
+import Loading from "@components/loading/Loading";
+import Error from "@components/error/Error";
+import ButtonsPagination from "@components/buttonsPagination/ButtonsPagination";
+import Category from "@components/category/Category";
+
+import GetProductsPerCategory from "@api/GetProductsPerCategory";
+import GetCategories from "@api/GetCategories";
+
+const CardProduct = lazy(()=> import("@components/cardProduct/CardProduct"));
 
 const ProductsByCategory = () => {
     const [searchParams] = useSearchParams();
@@ -39,7 +41,7 @@ const ProductsByCategory = () => {
                     <div className="p-3">
                         <div className='space-x-2 overflow-x-auto p-2 bg-white'>
                             {categories &&
-                                categories.map(category => <Category key={category.id} category={category} classNames="p-2 text-nowrap text-xs bg-gray-200 rounded-md" />)
+                                categories.map(category => <Category key={category.id} category={category} classNames="p-2 text-nowrap text-xs rounded-md" />)
                             }
                         </div>
                     </div>

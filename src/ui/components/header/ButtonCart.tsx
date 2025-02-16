@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { FaOpencart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { RootState } from "../../../model/redux/store";
+import { RootState } from "@redux/store";
 
 const ButtonCart:React.FC = () => {
 

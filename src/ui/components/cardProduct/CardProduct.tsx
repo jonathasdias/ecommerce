@@ -1,8 +1,8 @@
 import RandomStars from "../randomStars/RandomStars";
 import { Link } from "react-router-dom";
-import formatter from "../../../model/utils/formatPrice";
-import regexImproveImageQuality from "../../../model/utils/regexImproveImageQuality";
-import { ProductType } from "../../../model/@types/TypeProduct";
+import formatter from "@utils/formatPrice";
+import regexImproveImageQuality from "@utils/regexImproveImageQuality";
+import { ProductType } from "@/model/@types/TypeProduct";
 
 interface CardProductProps {
     product: ProductType;

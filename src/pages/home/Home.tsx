@@ -1,21 +1,16 @@
 import Slideshow from "./Slideshow";
-import Loading from '../../ui/components/loading/Loading';
-import Error from '../../ui/components/error/Error';
-import CarouselProducts from '../../ui/components/carouselProducts/CarouselProducts';
-import GetCategories from "../../model/api/GetCategories";
-import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
-import Category from "../../ui/components/category/Category";
-import { useMemo } from "react";
+import Loading from '@components/loading/Loading';
+import Error from '@components/error/Error';
+import CarouselProducts from '@components/carouselProducts/CarouselProducts';
+import GetCategories from "@api/GetCategories";
+import GetProductsPerCategory from "@api/GetProductsPerCategory";
+import Category from "@components/category/Category";
 
 const Home: React.FC = () => {
-
-    // Lembrar de adicionar alias, procurar no youtube salvo ou chatgpt
-    // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
-
-    const categoryIds = useMemo(() => ({
+    const categoryIds = {
         vehicle: "MLB5672",
         personalCare: "MLB1246"
-    }), []);
+    }
 
     const { data: vehicleProducts, error: errorVehicleProducts, isLoading: loadingVehicleProducts } = GetProductsPerCategory(categoryIds.vehicle);
     const { data: personalCare, error: errorPersonalCare, isLoading: loadingPersonalCare } = GetProductsPerCategory(categoryIds.personalCare);

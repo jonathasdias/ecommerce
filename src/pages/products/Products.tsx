@@ -1,14 +1,14 @@
 import { lazy, Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import Loading from "../../ui/components/loading/Loading";
-import Error from "../../ui/components/error/Error";
-import ButtonsPagination from "../../ui/components/buttonsPagination/ButtonsPagination";
-import FilterProducts from "../../ui/components/filtersProducts/FiltersProducts";
-import SkeletonProduct from "../../ui/components/skeletonProduct/SkeletonProduct";
-import GetSearchProducts from "../../model/api/GetSearchProducts";
+import Loading from "@components/loading/Loading";
+import Error from "@components/error/Error";
+import ButtonsPagination from "@components/buttonsPagination/ButtonsPagination";
+import FilterProducts from "@components/filtersProducts/FiltersProducts";
+import SkeletonProduct from "@components/skeletonProduct/SkeletonProduct";
+import GetSearchProducts from "@api/GetSearchProducts";
 
-const CardProduct = lazy(()=> import("../../ui/components/cardProduct/CardProduct"))
+const CardProduct = lazy(()=> import("@components/cardProduct/CardProduct"))
 
 const Products: React.FC = () => {
   const [searchParams] = useSearchParams();

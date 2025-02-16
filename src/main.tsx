@@ -1,17 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
 import App from './App.tsx'
-import './ui/styles/index.css'
-import { Provider } from 'react-redux'
-import store from './model/redux/store.ts'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/home/Home.tsx'
 import Products from './pages/products/Products.tsx'
-import { register } from 'swiper/element/bundle';
 import ProductDetails from './pages/productDetails/ProductDetails.tsx'
 import Cart from './pages/cart/Cart.tsx'
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import ProductsByCategory from './pages/productsByCategory/ProductsByCategory.tsx'
+
+import { Provider } from 'react-redux'
+import store from '@redux/store.ts'
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { register } from 'swiper/element/bundle';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
+
+import './ui/styles/index.css'
 
 register();
 

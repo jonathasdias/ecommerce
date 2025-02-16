@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Attribute } from "../../model/@types/TypeProductDetails";
+import { Attribute } from "@/model/@types/TypeProductDetails";
 
 interface Attributes {
     attributes: Attribute[]

@@ -1,5 +1,5 @@
 import 'swiper/swiper-bundle.css';
-import { ProductType } from '../../../model/@types/TypeProduct';
+import { ProductType } from '@/model/@types/TypeProduct';
 import { lazy, Suspense } from 'react';
 import SkeletonProduct from '../skeletonProduct/SkeletonProduct';
 
