@@ -9,10 +9,6 @@ import { useMemo } from "react";
 
 const Home: React.FC = () => {
 
-    // Lembrar de olhar productDetails e ver se coloca em componente ProductRelated
-    // Lembrar de corrigir lazy, suspense e skeleton
-    // Jogar no chatgpt como melhorar a performace dessa home page
-    // Melhorar perfomace de todas as paginas com memo, useMemo e useCallback
     // Lembrar de adicionar alias, procurar no youtube salvo ou chatgpt
     // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 

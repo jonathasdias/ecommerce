@@ -1,4 +1,4 @@
-import axios, { CancelTokenSource } from "axios";
+import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 interface TypePayment {
@@ -10,26 +10,14 @@ interface TypePayment {
 }
 
 const GetPaymentMethods = () => {
-    
-    const source: CancelTokenSource = axios.CancelToken.source();
-
     const { data, isLoading, error } = useQuery<TypePayment[]>({
         queryKey: ["paymentMethods"],
         queryFn: async () => {
-            const response = await axios({
-                url: "https://api.mercadolibre.com/sites/MLB/payment_methods",
-                cancelToken: source.token,
-            });
+            const response = await axios.get("https://api.mercadolibre.com/sites/MLB/payment_methods");
             return response.data;
         },
         staleTime: 10000,
     });
-
-    if (error) {
-        if (axios.isCancel(error)) {
-          console.log("Solicitação cancelada", error.message);
-        }
-    }
 
     return { data, isLoading, error };
 }

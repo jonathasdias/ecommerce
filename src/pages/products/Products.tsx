@@ -33,7 +33,13 @@ const Products: React.FC = () => {
         <section className="w-full">
           {data && <ButtonsPagination currentPage={page} totalPages={totalPages} />}
 
-          <Suspense fallback={<SkeletonProduct classNames="max-w-sm w-full"/>}>
+          <Suspense fallback={
+            <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 w-full md:gap-2 my-8 p-1 sm:p-2">
+              {Array.from({ length: itemsPerPage }).map((_, index) => (
+                  <SkeletonProduct key={index} classNames="max-w-sm w-full"/>
+              ))}
+            </div>
+          }>
             <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 w-full md:gap-2 my-8 p-1 sm:p-2">
                 {data?.results.map(product => (
                     <CardProduct key={product.id} product={product} />
