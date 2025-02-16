@@ -5,21 +5,21 @@ import CarouselProducts from '../../ui/components/carouselProducts/CarouselProdu
 import GetCategories from "../../model/api/GetCategories";
 import GetProductsPerCategory from "../../model/api/GetProductsPerCategory";
 import Category from "../../ui/components/category/Category";
+import { useMemo } from "react";
 
 const Home: React.FC = () => {
 
     // Lembrar de olhar productDetails e ver se coloca em componente ProductRelated
     // Lembrar de corrigir lazy, suspense e skeleton
     // Jogar no chatgpt como melhorar a performace dessa home page
-    // Lembrar do catery componente 
     // Melhorar perfomace de todas as paginas com memo, useMemo e useCallback
     // Lembrar de adicionar alias, procurar no youtube salvo ou chatgpt
     // Quando finalizar as melhorias lembrar de rodar npm run build para gerar o build final
 
-    const categoryIds = {
+    const categoryIds = useMemo(() => ({
         vehicle: "MLB5672",
         personalCare: "MLB1246"
-    }
+    }), []);
 
     const { data: vehicleProducts, error: errorVehicleProducts, isLoading: loadingVehicleProducts } = GetProductsPerCategory(categoryIds.vehicle);
     const { data: personalCare, error: errorPersonalCare, isLoading: loadingPersonalCare } = GetProductsPerCategory(categoryIds.personalCare);

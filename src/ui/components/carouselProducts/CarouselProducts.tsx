@@ -35,11 +35,11 @@ const CarouselProducts: React.FC<{ itemsCarousel: ProductType[], title: string }
                         },
                     })}
                 >
-                    {itemsCarousel.map((product) => (
-                        <Suspense key={product.id} fallback={<SkeletonProduct classNames='swiper-slide'/>}>
-                            <CardProduct product={product} classNames="swiper-slide"/>
-                        </Suspense>
-                    ))}
+                    <Suspense  fallback={<SkeletonProduct classNames='swiper-slide'/>}>
+                        {itemsCarousel.map((product) => (
+                            <CardProduct key={product.id} product={product} classNames="swiper-slide"/>
+                        ))}
+                    </Suspense>
                 </swiper-container>
             }
         </section>

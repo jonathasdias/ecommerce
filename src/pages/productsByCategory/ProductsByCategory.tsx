@@ -44,13 +44,13 @@ const ProductsByCategory = () => {
                         </div>
                     </div>
                     
-                    <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 w-full md:gap-2 my-8 p-1 sm:p-2">
-                        {data?.results.map(product => (
-                            <Suspense key={product.id} fallback={<SkeletonProduct classNames="max-w-sm w-full"/>}>
-                                <CardProduct product={product} />
-                            </Suspense>
-                        ))}
-                    </div>
+                        <Suspense fallback={<SkeletonProduct classNames="max-w-sm w-full"/>}>
+                            <div className="grid grid-cols-2 sm:grid-cols-auto-fit gap-0 sm:gap-1 w-full md:gap-2 my-8 p-1 sm:p-2">
+                                {data?.results.map(product => (
+                                        <CardProduct key={product.id} product={product} />
+                                    ))}
+                            </div>
+                        </Suspense>
 
                     {data && <ButtonsPagination currentPage={page} totalPages={totalPages} />}
                 </section>

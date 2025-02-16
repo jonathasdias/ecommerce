@@ -8,7 +8,6 @@ interface ButtonsPaginationProps {
 }
 
 const ButtonsPagination: React.FC<ButtonsPaginationProps> = ({ currentPage, totalPages }) => {
-
     const [, setSearchParams] = useSearchParams();
 
     const onPageChange = (page: number): void => {
