@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import GetProductsPerCategory from "@api/GetProductsPerCategory";
@@ -14,7 +14,7 @@ const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
 
     const { productId } = useParams();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.scrollTo(0, 0);
     }, [productId]);
 

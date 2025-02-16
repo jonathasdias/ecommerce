@@ -1,4 +1,4 @@
-import React from 'react';
+import { useLayoutEffect } from 'react';
 import { FaLeftLong, FaRightLong } from 'react-icons/fa6';
 import { useSearchParams } from "react-router-dom";
 
@@ -8,7 +8,13 @@ interface ButtonsPaginationProps {
 }
 
 const ButtonsPagination: React.FC<ButtonsPaginationProps> = ({ currentPage, totalPages }) => {
-    const [, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const page = searchParams.get('page');
+
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [page]);
 
     const onPageChange = (page: number): void => {
         setSearchParams(params => {
