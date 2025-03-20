@@ -2,32 +2,34 @@ export interface ProductType {
     id: string;
     title: string;
     price: number;
-    original_price: number;
-    available_quantity: number;
+    rating: number;
+    description: string;
+    discountPercentage: number;
     thumbnail: string;
-    permalink: string;
-    condition: string;
+    images: string[];
+    minimumOrderQuantity: number;
+    warrantyInformation: string;
+    shippingInformation: string;
+    availabilityStatus: string;
+    returnPolicy: string;
+    stock: number;
+    reviews: Reviews[];
 }
 
-export interface PagingType {
-    total: number
+interface Reviews {
+    rating: number;
+    comment: string;
+    date: string;
+    reviewerName: string;
+    reviewerEmail: string;
 }
 
-interface FilterValueType {
-    id?: string;
-    name?: string;
-    results?: number;
+export interface Data {
+    limit: number;
+    products: ProductType[];
+    skip: number;
+    total: number;
 }
 
-export interface FiltersType {
-    id: string;
-    name: string;
-    type: 'number' | 'range' | 'boolean' | 'text' | 'list' | 'STRING';
-    values: FilterValueType[];
-}
-
-export default interface ApiResponseType {
-    available_filters: FiltersType[];
-    paging: PagingType;
-    results: ProductType[];
-}
+type ApiResponseType = Data;
+export default ApiResponseType;

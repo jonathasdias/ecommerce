@@ -8,16 +8,16 @@ import Category from "@components/category/Category";
 
 const Home: React.FC = () => {
     const categoryIds = {
-        vehicle: "MLB5672",
-        personalCare: "MLB1246"
+        sportsAccessories: "sports-accessories",
+        kitchenAccessories: "kitchen-accessories"
     }
 
-    const { data: vehicleProducts, error: errorVehicleProducts, isLoading: loadingVehicleProducts } = GetProductsPerCategory(categoryIds.vehicle);
-    const { data: personalCare, error: errorPersonalCare, isLoading: loadingPersonalCare } = GetProductsPerCategory(categoryIds.personalCare);
+    const { data: sportsAccessories, error: errorSportsAccessories, isLoading: loadingSportsAccessories } = GetProductsPerCategory(categoryIds.sportsAccessories);
+    const { data: kitchenAccessories, error: errorKitchenAccessories, isLoading: loadingKitchenAccessories } = GetProductsPerCategory(categoryIds.kitchenAccessories);
     const { data: categories, error: errorCategories, isLoading: loadingCategories } = GetCategories();
 
-    if (loadingVehicleProducts || loadingPersonalCare || loadingCategories) return (<Loading />);
-    if (errorVehicleProducts || errorPersonalCare || errorCategories) return (<Error />);
+    if (loadingSportsAccessories || loadingKitchenAccessories || loadingCategories) return (<Loading />);
+    if (errorSportsAccessories || errorKitchenAccessories || errorCategories) return (<Error />);
 
     return (
         <main className="min-h-screen flex flex-col flex-nowrap gap-16">
@@ -30,14 +30,14 @@ const Home: React.FC = () => {
 
                 <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
                     {categories &&
-                        categories.map(category => <Category key={category.id} category={category} classNames="p-4 text-nowrap text-sm md:text-lg bg-gray-200 rounded-md" />)
+                        categories.map(category => <Category key={category.slug} category={category} classNames="p-4 text-nowrap text-sm md:text-lg bg-gray-200 rounded-md" />)
                     }
                 </div>
             </section>
 
-            <CarouselProducts itemsCarousel={vehicleProducts?.results || []} title="Para seu veículo"/>
+            <CarouselProducts itemsCarousel={sportsAccessories?.products || []} title="Acessórios esportivos"/>
 
-            <CarouselProducts itemsCarousel={personalCare?.results || []} title="Cuidado pessoal"/>
+            <CarouselProducts itemsCarousel={kitchenAccessories?.products || []} title="Acessórios de cozinha"/>
         </main>
     )
 }
