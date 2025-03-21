@@ -22,25 +22,25 @@ const PurchaseStepsPanel: React.FC = () => {
                     style={{ width: `${hoverIndex * initialPageWidthPercentage}%`}}
                 ></div>
 
-                <button title="Carrinho de compras"
+                <button title="Shopping cart"
                     onClick={() => handleWidthClick(1)}
                     className={`${hoverIndex === 1 ? "border-blue-700" : "border-slate-950"} bg-gray-700 size-12 md:size-16 border-[4px] text-xl md:text-3xl grid place-items-center rounded-full`}>
                     <FaShoppingCart />
                 </button>
 
-                <button title="Sua identificação"
+                <button title="Your identification"
                     onClick={() => handleWidthClick(2)}
                     className={`${hoverIndex === 2 ? "border-blue-700" : "border-slate-950"} bg-gray-700 size-12 md:size-16 border-[4px] text-xl md:text-3xl grid place-items-center rounded-full disabled:opacity-40`} disabled>
                     <FaUser />
                 </button>
 
-                <button title="Sua entrega"
+                <button title="Your delivery"
                     onClick={() => handleWidthClick(3)}
                     className={`${hoverIndex === 3 ? "border-blue-700" : "border-slate-950"} bg-gray-700 size-12 md:size-16 border-[4px] text-xl md:text-3xl grid place-items-center rounded-full disabled:opacity-40`} disabled>
                     <FaTruck />
                 </button>
 
-                <button title="Pagamento"
+                <button title="Payment"
                     onClick={() => handleWidthClick(4)}
                     className={`${hoverIndex === 4 ? "border-blue-700" : "border-slate-950"} bg-gray-700 size-12 md:size-16 border-[4px] text-xl md:text-3xl grid place-items-center rounded-full disabled:opacity-40`} disabled>
                     <MdOutlinePayment />
