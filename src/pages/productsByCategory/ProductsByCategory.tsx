@@ -24,7 +24,7 @@ const ProductsByCategory = () => {
 
     if (isLoading || loadingCategories) return (<Loading/>);
     if (error || errorCategories) return (<Error/>);
-    if(data?.products.length === 0) return <main className="h-[80vh]"><h1 className="mx-auto font-bold text-2xl text-center mt-20">Não encontramos o produto!!</h1></main>; 
+    if((data?.products?.length ?? 0) === 0) return <main className="h-[80vh]"><h1 className="mx-auto font-bold text-2xl text-center mt-20">Não encontramos o produto!!</h1></main>; 
     
     const totalPages: number = Math.ceil(data?.total as number / itemsPerPage);
 
