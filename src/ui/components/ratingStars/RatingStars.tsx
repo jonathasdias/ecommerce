@@ -15,7 +15,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({ rating, maxStars = 5, classNa
   return (
     <div className={`${classNames} flex flex-nowrap my-2 text-yellow-500`}>
       {Array.from({ length: fullStars }, (_, index) => (
-        <FaStar key={index} />
+        <FaStar key={index + "Star"} />
       ))}
       {hasHalfStar && <FaStarHalfAlt />}
       {Array.from({ length: emptyStars }, (_, index) => (

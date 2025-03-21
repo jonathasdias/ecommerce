@@ -17,16 +17,13 @@ import GetProductPerId from "@api/GetProductPerId";
 import { ProductType } from "@/model/@types/TypeProduct";
 
 import CardComment from "@/ui/components/cardComment/CardComment";
+import ProductRelated from "./ProductRelated";
 
 const ProductDetails: React.FC = () => {
   const { productId } = useParams();
   const dispatch: AppDispatch = useDispatch();
 
-  const {
-    data: detailsProduct,
-    error,
-    isLoading,
-  } = GetProductPerId(productId || "");
+  const {data: detailsProduct, error, isLoading,} = GetProductPerId(productId || "");
 
   if (isLoading) return <Loading />;
   if (error) return <Error />;
@@ -73,12 +70,13 @@ const ProductDetails: React.FC = () => {
               onClick={() => handleProductClick(detailsProduct)}
               className="flex justify-between py-2 px-6 rounded-md bg-green-700 hover:bg-green-600"
             >
-              Adicionar ao carrinho
+              Add to Cart
             </button>
 
-            <div className="flex mt-4">
-              <div className="w-full">
-                <h2 className="mb-4 text-lg">Informações do produto</h2>
+            <div className="flex flex-col gap-y-4 md:gap-0 md:flex-row mt-4">
+
+              <div className="md:w-1/2">
+                <h2 className="mb-4 text-lg text-gray-800">Product Information</h2>
 
                 <ul className="list-disc ps-5 space-y-2 break-words">
                   <li>{detailsProduct.availabilityStatus}.</li>
@@ -90,6 +88,12 @@ const ProductDetails: React.FC = () => {
                   )}
                 </ul>
               </div>
+
+              <div className="md:w-1/2">
+                <h2 className="mb-4 text-lg text-gray-800">Product Information</h2>
+                <p>{detailsProduct.description}</p>
+              </div>
+
             </div>
           </div>
         </section>
@@ -97,22 +101,22 @@ const ProductDetails: React.FC = () => {
 
       {detailsProduct && (
         <section className="bg-white rounded-lg">
+      
+          <hr className="my-6 w-1/2 mx-auto" />
+
+          <ProductRelated categoryName={detailsProduct.category}/>
+
+          <hr className="my-6 w-1/2 mx-auto" />
+
           <h2 className="text-2xl p-4">Comments</h2>
 
           <div className="space-y-4">
             {detailsProduct &&
-              detailsProduct.reviews.map((review) => (
-                <CardComment key={review.reviewerName} review={review} />
+              detailsProduct.reviews.map((review, i) => (
+                <CardComment key={review.reviewerName + i} review={review} />
               ))}
           </div>
 
-          {/* Adicionar comentarios e produtos relacionados aqui */}
-
-          <hr className="my-6 w-1/2 mx-auto" />
-
-          {/* <ProductRelated categoryId={detailsProduct.category_id}/> */}
-
-          <hr className="my-6 w-1/2 mx-auto" />
         </section>
       )}
     </main>

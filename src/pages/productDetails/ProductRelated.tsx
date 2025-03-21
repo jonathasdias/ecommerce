@@ -5,12 +5,12 @@ import GetProductsPerCategory from "@api/GetProductsPerCategory";
 import CardProduct from "@components/cardProduct/CardProduct";
 
 
-const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
+const ProductRelated: React.FC<{categoryName: string}> = ({ categoryName }) => {
 
     const limit:number = 20;
     const page:number = 0;
 
-    const { data:relatedProducts } = GetProductsPerCategory(categoryId, page, limit);
+    const { data:relatedProducts } = GetProductsPerCategory(categoryName, page, limit);
 
     const { productId } = useParams();
 
@@ -24,8 +24,8 @@ const ProductRelated: React.FC<{categoryId: string}> = ({ categoryId }) => {
 
             <div className="flex overflow-hidden overflow-x-auto gap-x-2 p-3">
                 {relatedProducts && 
-                    relatedProducts.results.map(product=> (
-                        <CardProduct key={product.id + 1} product={product} classNames="flex-shrink-0 w-52 md:w-64"/>
+                    relatedProducts.products.map(product => (
+                        <CardProduct key={product.title + 1} product={product} classNames="flex-shrink-0 w-52 md:w-64"/>
                     ))
                 }
             </div>

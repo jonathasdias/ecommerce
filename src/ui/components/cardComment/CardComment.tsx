@@ -18,9 +18,7 @@ const CardComment: React.FC<CardCommentPropsTypes> = ({ review }) => {
         <h3 className="text-base">{formatDateTimeToUs(review.date)}</h3>
       </div>
 
-      <p className="flex flex-nowrap items-center gap-x-2">
-        <RatingStars rating={review.rating} />
-      </p>
+      <RatingStars rating={review.rating} />
 
       <p className="mt-4">{review.comment}</p>
     </article>
