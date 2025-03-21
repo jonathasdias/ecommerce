@@ -13,6 +13,7 @@ export interface ProductType {
     availabilityStatus: string;
     returnPolicy: string;
     stock: number;
+    quantity?: number;
     reviews: Reviews[];
 }
 
