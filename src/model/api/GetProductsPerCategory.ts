@@ -7,8 +7,6 @@ const GetProductsPerCategory = (categoryName: string, skip: number = 0, limit: n
         queryKey: ["productsPerCategory", categoryName, skip, limit],
         queryFn: async () => {
             const response = await axios.get(`https://dummyjson.com/products/category/${categoryName}?&skip=${skip}&limit=${limit}`);
-            console.log(response.data.products[0]);
-            
             return response.data;
         },
         staleTime: 10000,

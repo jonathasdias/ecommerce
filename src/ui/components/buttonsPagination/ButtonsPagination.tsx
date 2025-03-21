@@ -55,7 +55,7 @@ const ButtonsPagination: React.FC<ButtonsPaginationProps> = ({ currentPage, tota
 
         const createButton = (page: number) => (
             <button
-                key={page}
+                key={page + "button"}
                 onClick={() => onPageChange(page)}
                 aria-current={currentPage === page ? 'page' : undefined}
                 className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${currentPage === page
