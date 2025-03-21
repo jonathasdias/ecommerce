@@ -79,7 +79,7 @@ const ProductDetails: React.FC = () => {
                 <section className="bg-white rounded-lg">
                     <h2 className="text-2xl p-4">Características do produto</h2>
 
-                    {/* <TableAttributes attributes={detailsProduct.attributes}/> */}
+                    {/* Adicionar comentarios e produtos relacionados aqui */}
 
                     <hr className="my-6 w-1/2 mx-auto"/>
 
