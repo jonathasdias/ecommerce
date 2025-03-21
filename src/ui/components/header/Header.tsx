@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                 </Link>
 
                 <form onSubmit={handleSearchProduct} className="border-2 flex flex-nowrap w-[40rem] rounded-md">
-                    <input type="search" name="search" value={search} onChange={(e)=> setSearch(e.target.value)} className="py-1 px-2 md:p-2 w-full bg-[#E8F0FE]" placeholder="Busque pelo nome do seu produto"/>
+                    <input type="search" name="search" value={search} onChange={(e)=> setSearch(e.target.value)} className="py-1 px-2 md:p-2 w-full bg-[#E8F0FE]" placeholder="Search for your product"/>
                     <button type="submit" className="px-3" aria-label="Buscar produto"><FaSearch /></button>
                 </form>
 

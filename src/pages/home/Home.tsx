@@ -26,7 +26,7 @@ const Home: React.FC = () => {
             </section>
 
             <section className='bg-white'>
-                <h2 className='text-lg sm:text-2xl p-4'>Categorias</h2>
+                <h2 className='text-lg sm:text-2xl p-4'>Categories</h2>
 
                 <div className='flex gap-2 p-3 pt-0 overflow-x-auto'>
                     {categories &&
@@ -35,9 +35,9 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            <CarouselProducts itemsCarousel={sportsAccessories?.products || []} title="Acessórios esportivos"/>
+            <CarouselProducts itemsCarousel={sportsAccessories?.products || []} title="Sports accessories"/>
 
-            <CarouselProducts itemsCarousel={kitchenAccessories?.products || []} title="Acessórios de cozinha"/>
+            <CarouselProducts itemsCarousel={kitchenAccessories?.products || []} title="Kitchen accessories"/>
         </main>
     )
 }
