@@ -17,7 +17,7 @@ export interface ProductType {
     reviews: Reviews[];
 }
 
-interface Reviews {
+export interface Reviews {
     rating: number;
     comment: string;
     date: string;
